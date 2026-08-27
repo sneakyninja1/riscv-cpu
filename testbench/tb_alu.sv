@@ -54,7 +54,7 @@ module tb_alu;
         else 
             $error("Test Case 4 Failed: OR %0d | %0d, expected 7, got %0d", A, B, result); 
 
-         //Test Case 5: A = 3, B = 5, operation = 100 (XOR)
+         //Test Case 5: A = 3, B = 5, operation = 100 (XOR)           
         A = 8'd3;
         B = 8'd5; 
         operation = 3'b100;
