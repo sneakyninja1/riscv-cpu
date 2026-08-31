@@ -31,7 +31,7 @@ d_flip_flop dut (
         else 
             $error("Test Case 2 Failed: Expected 1 got %0d", Q); 
         
-        //Test Case 3: D = 1, Synchronous Reset 
+        //Test Case 3: D = 1, Reset 
         @(posedge clk);
         reset = 1;  
         #1; 
