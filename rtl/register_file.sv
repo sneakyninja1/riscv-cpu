@@ -10,8 +10,8 @@ module register_file(
     input logic reset
 ); 
     logic [31:0] registers [0:31]; //32 bit wide, 32 registers
-    assign data_1 = registers[read_addr_1]; 
-    assign data_2 = registers[read_addr_2];  
+    assign data_1 = (read_addr_1 == 0) ? 32'b0: registers[read_addr_1]; 
+    assign data_2 = (read_addr_2 == 0) ? 32'b0: registers[read_addr_2];  
 
     always_ff @(posedge clk or posedge reset) begin 
         if (reset) //Reset all registers to 0 
