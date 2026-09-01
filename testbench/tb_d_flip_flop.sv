@@ -11,7 +11,7 @@ d_flip_flop dut (
     .reset(reset)
 ); 
 
-    always #5 clk = ~clk; 
+    always #5 clk = ~clk; //Every 5 cycles switch 
     initial begin
         //Test Case 1: D = 0
         D = 0; 
