@@ -90,7 +90,7 @@ register_file dut(
         read_addr_1 = 5'd2; 
         #1; 
         if (data_1 == 48 && data_2 == 77)
-            $display("Test Case 5 Passed."); 
+            $display("Test Case 5 Passed"); 
         else
             $error("Test Case 5 Failed. Expected data1 to be 48 but got %0d, and data2 to be 77 but got %0d", data_1, data_2); 
     end 
