@@ -75,7 +75,7 @@ register_file dut(
         read_addr_1 = write_addr; 
         #1; 
         if (data_1 == 0)
-            $display("Test Case 4 Passed.");  
+            $display("Test Case 4 Passed");  
         else
             $error("Test Case 4 Failed. Expected 0, got %0d", data_1);
     
