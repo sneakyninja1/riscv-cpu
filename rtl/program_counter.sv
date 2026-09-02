@@ -1,10 +1,13 @@
 module program_counter(
     input logic clk,
     input logic reset,
-    input logic next_pc, 
-    output logic pc_out
+    output logic [31:0]pc_out
 ); 
 
-
-
-end module 
+    always_ff @(posedge clk or posedge reset) begin 
+        if(reset)
+            pc_out <= 32'd0; 
+        else
+            pc_out <= pc_out + 4; 
+    end 
+endmodule 
