@@ -24,7 +24,7 @@ control_unit dut(
             $error("Test Case 1 Failed. Got %0b, expected 010", alu_op);
         
         //Test Case 2: OR Instruction 
-        funct3 = 3'b100; 
+        funct3 = 3'b110; 
         #1; 
         if(alu_op == 3'b011 & reg_write_enable == 1)
             $display("Test Case 2 Passed"); 
@@ -41,13 +41,15 @@ control_unit dut(
         
         //Test Case 4: SLL Instruction 
         funct3 = 3'b011; 
-        if (alu_op == 3'b101 & reg_write_enable == 1); 
+        #1; 
+        if (alu_op == 3'b101 & reg_write_enable == 1)
             $display("Test Case 4 Passed"); 
         else 
-            $error("Test Case 4 Failed. Expected 100 but got %0b", alu_op); 
+            $error("Test Case 4 Failed. Expected 101 but got %0b", alu_op); 
         
         //Test Case 5: SRL Instruction 
         funct3 = 3'b101; 
+        #1; 
         if(alu_op == 3'b110 & reg_write_enable == 1)
             $display("Test Case 5 Passed"); 
         else 
@@ -55,6 +57,7 @@ control_unit dut(
 
         //Test Case 6: SLT Instruction 
         funct3 = 3'b010; 
+        #1; 
         if(alu_op == 3'b111 & reg_write_enable == 1)
             $display("Test Case 6 Passed"); 
         else 
@@ -63,6 +66,7 @@ control_unit dut(
         //Test Case 7: ADD Instruction 
         funct3 = 3'b000; 
         funct7 = 7'b0000000; 
+        #1; 
         if(alu_op == 3'b000 & reg_write_enable == 1)
             $display("Test Case 7 Passed"); 
         else 
@@ -71,6 +75,7 @@ control_unit dut(
         //Test Case 8: SUB Instruction 
         funct3 = 3'b000; 
         funct7 = 7'b0100000; 
+        #1; 
         if(alu_op == 3'b001 & reg_write_enable == 1)
             $display("Test Case 8 Passed"); 
         else 
@@ -80,6 +85,7 @@ control_unit dut(
         opcode = 7'b0000000; 
         funct3 = 3'b000; 
         funct7 = 7'b0000000; 
+        #1; 
         if(alu_op == 3'b000 & reg_write_enable == 0)
             $display("Test Case 9 Passed"); 
         else 
