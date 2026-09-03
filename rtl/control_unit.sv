@@ -16,13 +16,13 @@ module control_unit(
                         else 
                             alu_op = 3'b001; //SUB
                     end
-                    3'b001: alu_op = 3'b001; 
-                    3'b010: alu_op = 3'b010; 
-                    3'b011: alu_op = 3'b011; 
-                    3'b100: alu_op = 3'b100; 
-                    3'b101: alu_op = 3'b101; 
-                    3'b110: alu_op = 3'b110; 
-                    3'b111: alu_op = 3'b111; 
+                    3'b001: alu_op = 3'b101; //SLL
+                    3'b010: alu_op = 3'b111; //SLT(Comparison)
+                    3'b011: alu_op = 3'b000; //SLTU not supported yet mapped to ADD for now
+                    3'b100: alu_op = 3'b100; //XOR
+                    3'b101: alu_op = 3'b110; //SRL
+                    3'b110: alu_op = 3'b011; //OR
+                    3'b111: alu_op = 3'b010; //AND
                 endcase
             end  
             default: begin
