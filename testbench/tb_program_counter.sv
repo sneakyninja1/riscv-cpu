@@ -17,7 +17,7 @@ program_counter dut(
         @(posedge clk);
         #1; 
         if (pc_out == 0)
-            $display("Test Case 1 Passed."); 
+            $display("Test Case 1 Passed"); 
         else 
             $error("Test Case 1 Failed. Expected pc out to be 0 but got %0d", pc_out); 
         
@@ -27,12 +27,12 @@ program_counter dut(
             expected_pc = pc_out + 4; 
             @(posedge clk); 
             #1; 
-            if (expected_pc == pc_out)
-                $display("Test Case 2 Passed"); 
-            else
-                $error("Test Case 2 Failed."); 
-        end
-
+        end 
+        if (expected_pc == pc_out)
+            $display("Test Case 2 Passed"); 
+        else
+            $error("Test Case 2 Failed."); 
+        
         //Test Case 3: Reset pressed at 
         @(negedge clk); 
         #1; 
