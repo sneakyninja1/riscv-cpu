@@ -10,7 +10,12 @@ module control_unit(
             7'b0110011: begin
                 reg_write_enable = 1; 
                 case(funct3)
-                    3'b000: alu_op = 3'b000; 
+                    3'b000: begin //Check if signal is ADD or SUB
+                        if (funct7 == 7'b0000000)
+                            alu_op = 3'b000; //ADD
+                        else 
+                            alu_op = 3'b001; //SUB
+                    end
                     3'b001: alu_op = 3'b001; 
                     3'b010: alu_op = 3'b010; 
                     3'b011: alu_op = 3'b011; 
@@ -23,6 +28,7 @@ module control_unit(
             default: begin
                 alu_op = 3'b000; 
                 reg_write_enable = 0; 
+            end
         endcase 
     end
 endmodule
