@@ -31,6 +31,8 @@ module cpu(
         .rd(rd), 
         .opcode(opcode)
     ); 
+    logic [31:0] extended_imm; 
+    assign extended_imm = {{20{imm[11]}}, imm};
 
     logic [2:0] alu_op; 
     logic reg_write_enable; 
