@@ -5,7 +5,8 @@ module instruction_decoder(
     output logic [4:0] rs1, 
     output logic [2:0] funct3, 
     output logic [4:0] rd,
-    output logic [6:0] opcode
+    output logic [6:0] opcode,
+    output logic [11:0] imm
 ); 
     assign opcode = instruction[6:0]; 
     assign rd = instruction[11:7]; 
@@ -13,5 +14,6 @@ module instruction_decoder(
     assign rs1 = instruction[19:15]; 
     assign rs2 = instruction[24:20]; 
     assign funct7 = instruction[31:25]; 
+    assign imm = instruction[31:20]; 
 
 endmodule 
