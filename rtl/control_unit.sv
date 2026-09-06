@@ -7,6 +7,11 @@ module control_unit(
 ); 
     always_comb begin
         case(opcode)
+            7'b0010011: begin //I-Type Added 
+                alu_op = 3'b000; 
+                reg_write_enable = 1'b1; 
+            end 
+
             7'b0110011: begin
                 reg_write_enable = 1; 
                 case(funct3)

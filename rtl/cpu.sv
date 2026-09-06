@@ -21,7 +21,8 @@ module cpu(
     logic [2:0] funct3;  
     logic [4:0] rd; 
     logic [6:0] opcode; 
-
+    logic [11:0] imm; 
+    
     instruction_decoder instr_decod(
         .instruction(instruction), 
         .funct7(funct7), 
@@ -29,7 +30,8 @@ module cpu(
         .rs1(rs1), 
         .funct3(funct3), 
         .rd(rd), 
-        .opcode(opcode)
+        .opcode(opcode),
+        .imm(imm)
     ); 
     logic [31:0] extended_imm; 
     assign extended_imm = {{20{imm[11]}}, imm};
@@ -58,10 +60,12 @@ module cpu(
         .data_1(data_1), 
         .data_2(data_2)
     ); 
-    
+
+    logic [31:0] alu_b_input; 
+    assign alu_b_input = (opcode == 7'b0010011) ? extended_imm : data_2;
     alu alu_file(
         .A(data_1), 
-        .B(data_2), 
+        .B(alu_b_input), 
         .operation(alu_op), 
         .result(result)
     ); 
